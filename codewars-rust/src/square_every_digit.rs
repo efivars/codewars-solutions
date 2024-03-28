@@ -32,12 +32,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn spins_mixed_sentence() {
-        let samples = [
-            (9119, 811181),
-            (1234, 14916),
-            (2405, 416025),
-        ];
+    fn squares_every_digit() {
+        let samples = [(9119, 811181), (1234, 14916), (2405, 416025)];
 
         for (input, expected) in samples {
             assert_eq!(square_digits(input), expected)
