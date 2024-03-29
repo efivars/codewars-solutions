@@ -16,15 +16,16 @@ fn tower_builder(n_floors: usize) -> Vec<String> {
             let wall_width = 1 + ((floor - 1) * 2);
             let space_width = (floor_width - wall_width) / 2;
 
-            let space = " ".repeat(space_width);
             let wall = "*".repeat(wall_width);
+            let space = " ".repeat(space_width);
 
-            let mut result = String::with_capacity(floor_width);
-            result.push_str(space.as_str());
-            result.push_str(wall.as_str());
-            result.push_str(space.as_str());
+            acc.push(format!(
+                "{}{}{}",
+                space.as_str(),
+                wall.as_str(),
+                space.as_str()
+            ));
 
-            acc.push(result);
             acc
         })
 }
