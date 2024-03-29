@@ -12,6 +12,7 @@ mod write_number_in_expanded_form;
 mod ip_validation;
 mod two_sum;
 mod consecutive_strings;
+mod build_tower;
 
 fn main() {
     println!("Hello, world!");
