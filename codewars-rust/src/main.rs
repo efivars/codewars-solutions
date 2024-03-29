@@ -7,6 +7,7 @@ mod detect_pangram;
 mod find_the_odd_int;
 mod pagination_helper;
 mod move_zeros;
+mod persistent_bugger;
 
 fn main() {
     println!("Hello, world!");
