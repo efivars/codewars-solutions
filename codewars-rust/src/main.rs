@@ -6,6 +6,7 @@ mod string_ends_with;
 mod detect_pangram;
 mod find_the_odd_int;
 mod pagination_helper;
+mod move_zeros;
 
 fn main() {
     println!("Hello, world!");
