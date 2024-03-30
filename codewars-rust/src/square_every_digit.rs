@@ -11,32 +11,33 @@
  */
 
 fn digits(num: u64) -> impl Iterator<Item = u64> {
-    num.to_string()
-        .chars()
-        .map(|d| d.to_digit(10).unwrap().into())
-        .collect::<Vec<_>>()
-        .into_iter()
+  num
+    .to_string()
+    .chars()
+    .map(|d| d.to_digit(10).unwrap().into())
+    .collect::<Vec<_>>()
+    .into_iter()
 }
 
 fn square_digits(num: u64) -> u64 {
-    digits(num)
-        .map(|d| (d * d).to_string())
-        .collect::<Vec<String>>()
-        .join("")
-        .parse()
-        .unwrap()
+  digits(num)
+    .map(|d| (d * d).to_string())
+    .collect::<Vec<String>>()
+    .join("")
+    .parse()
+    .unwrap()
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+  use super::*;
 
-    #[test]
-    fn squares_every_digit() {
-        let samples = [(9119, 811181), (1234, 14916), (2405, 416025)];
+  #[test]
+  fn squares_every_digit() {
+    let samples = [(9119, 811181), (1234, 14916), (2405, 416025)];
 
-        for (input, expected) in samples {
-            assert_eq!(square_digits(input), expected)
-        }
+    for (input, expected) in samples {
+      assert_eq!(square_digits(input), expected)
     }
+  }
 }

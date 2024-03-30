@@ -8,36 +8,36 @@
  */
 
 fn tower_builder(n_floors: usize) -> Vec<String> {
-    let floor_width = 1 + ((n_floors - 1) * 2);
+  let floor_width = 1 + ((n_floors - 1) * 2);
 
-    (1..=n_floors)
-        .into_iter()
-        .fold(Vec::with_capacity(n_floors), |mut acc, floor| {
-            let wall_width = 1 + ((floor - 1) * 2);
-            let space_width = (floor_width - wall_width) / 2;
+  (1..=n_floors)
+    .into_iter()
+    .fold(Vec::with_capacity(n_floors), |mut acc, floor| {
+      let wall_width = 1 + ((floor - 1) * 2);
+      let space_width = (floor_width - wall_width) / 2;
 
-            let wall = "*".repeat(wall_width);
-            let space = " ".repeat(space_width);
+      let wall = "*".repeat(wall_width);
+      let space = " ".repeat(space_width);
 
-            acc.push(format!(
-                "{}{}{}",
-                space.as_str(),
-                wall.as_str(),
-                space.as_str()
-            ));
+      acc.push(format!(
+        "{}{}{}",
+        space.as_str(),
+        wall.as_str(),
+        space.as_str()
+      ));
 
-            acc
-        })
+      acc
+    })
 }
 
 #[cfg(test)]
 mod tests {
-    use super::tower_builder;
+  use super::tower_builder;
 
-    #[test]
-    fn fixed_tests() {
-        assert_eq!(tower_builder(1), vec!["*"]);
-        assert_eq!(tower_builder(2), vec![" * ", "***"]);
-        assert_eq!(tower_builder(3), vec!["  *  ", " *** ", "*****"]);
-    }
+  #[test]
+  fn fixed_tests() {
+    assert_eq!(tower_builder(1), vec!["*"]);
+    assert_eq!(tower_builder(2), vec![" * ", "***"]);
+    assert_eq!(tower_builder(3), vec!["  *  ", " *** ", "*****"]);
+  }
 }

@@ -100,11 +100,9 @@ impl TicTacToe {
 
     match side {
       CellValue::Empty => panic!("Empty side cannot win xD"),
-      s => WIN_COMBINATIONS.iter().any(|combination| {
-        combination
-          .into_iter()
-          .all(|index| cells[*index] == *s)
-      }),
+      s => WIN_COMBINATIONS
+        .iter()
+        .any(|combination| combination.into_iter().all(|index| cells[*index] == *s)),
     }
   }
 

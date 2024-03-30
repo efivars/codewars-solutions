@@ -9,34 +9,34 @@
  */
 
 fn persistence_recursive(num: u64, times: u64) -> u64 {
-    if num < 10 {
-        return times;
-    }
+  if num < 10 {
+    return times;
+  }
 
-    let digits: Vec<u64> = num
-        .to_string()
-        .chars()
-        .map(|d| d.to_string().parse::<u64>().unwrap())
-        .collect();
+  let digits: Vec<u64> = num
+    .to_string()
+    .chars()
+    .map(|d| d.to_string().parse::<u64>().unwrap())
+    .collect();
 
-    let result = digits.into_iter().fold(1_u64, |acc, value| acc * value);
+  let result = digits.into_iter().fold(1_u64, |acc, value| acc * value);
 
-    persistence_recursive(result, times + 1)
+  persistence_recursive(result, times + 1)
 }
 
 fn persistence(num: u64) -> u64 {
-    persistence_recursive(num, 0)
+  persistence_recursive(num, 0)
 }
 
 #[cfg(test)]
 mod tests {
-    use super::persistence;
+  use super::persistence;
 
-    #[test]
-    fn sample_tests() {
-        assert_eq!(persistence(39), 3);
-        assert_eq!(persistence(4), 0);
-        assert_eq!(persistence(25), 2);
-        assert_eq!(persistence(999), 4);
-    }
+  #[test]
+  fn sample_tests() {
+    assert_eq!(persistence(39), 3);
+    assert_eq!(persistence(4), 0);
+    assert_eq!(persistence(25), 2);
+    assert_eq!(persistence(999), 4);
+  }
 }

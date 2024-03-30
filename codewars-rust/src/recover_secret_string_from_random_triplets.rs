@@ -111,8 +111,6 @@ fn recover_secret(triplets: Vec<[char; 3]>) -> String {
 fn example_test() {
   assert_eq!(
     recover_secret(vec![
-
-      
       ['t', 'u', 'p'],
       ['w', 'h', 'i'],
       ['t', 's', 'u'],
@@ -120,9 +118,6 @@ fn example_test() {
       ['h', 'a', 'p'],
       ['t', 'i', 's'],
       ['w', 'h', 's']
-
-
-      
     ]),
     "whatisup"
   );

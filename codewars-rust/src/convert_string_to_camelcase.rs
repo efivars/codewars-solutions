@@ -10,40 +10,41 @@
  */
 
 fn capitalize(s: &str) -> String {
-    let mut c = s.chars();
+  let mut c = s.chars();
 
-    match c.next() {
-        None => String::new(),
-        Some(f) => f.to_uppercase().chain(c).collect(),
-    }
+  match c.next() {
+    None => String::new(),
+    Some(f) => f.to_uppercase().chain(c).collect(),
+  }
 }
 
 fn to_camel_case(text: &str) -> String {
-    let separators = ['_', '-'];
+  let separators = ['_', '-'];
 
-    text.split(&separators)
-        .enumerate()
-        .map(|(index, str)| match index {
-            0 => str.to_owned(),
-            _ => capitalize(str),
-        })
-        .collect()
+  text
+    .split(&separators)
+    .enumerate()
+    .map(|(index, str)| match index {
+      0 => str.to_owned(),
+      _ => capitalize(str),
+    })
+    .collect()
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+  use super::*;
 
-    #[test]
-    fn converts_to_camelcase() {
-        let samples = [
-            ("the-stealth-warrior", "theStealthWarrior"),
-            ("The_Stealth_Warrior", "TheStealthWarrior"),
-            ("The_Stealth-Warrior", "TheStealthWarrior"),
-        ];
+  #[test]
+  fn converts_to_camelcase() {
+    let samples = [
+      ("the-stealth-warrior", "theStealthWarrior"),
+      ("The_Stealth_Warrior", "TheStealthWarrior"),
+      ("The_Stealth-Warrior", "TheStealthWarrior"),
+    ];
 
-        for (input, expected) in samples {
-            assert_eq!(to_camel_case(input), expected)
-        }
+    for (input, expected) in samples {
+      assert_eq!(to_camel_case(input), expected)
     }
+  }
 }

@@ -13,37 +13,38 @@ const DUP_CHAR: char = ')';
 const ONCE_CHAR: char = '(';
 
 fn has_dups(string: &str, char: char) -> bool {
-    string
-        .to_ascii_lowercase()
-        .match_indices(char.to_ascii_lowercase())
-        .count()
-        > 1
+  string
+    .to_ascii_lowercase()
+    .match_indices(char.to_ascii_lowercase())
+    .count()
+    > 1
 }
 
 fn duplicate_encode(word: &str) -> String {
-    word.chars()
-        .map(|char| match has_dups(word, char) {
-            true => DUP_CHAR,
-            false => ONCE_CHAR,
-        })
-        .collect()
+  word
+    .chars()
+    .map(|char| match has_dups(word, char) {
+      true => DUP_CHAR,
+      false => ONCE_CHAR,
+    })
+    .collect()
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+  use super::*;
 
-    #[test]
-    fn encodes() {
-        let samples = [
-            (("din"), ("(((")),
-            (("recede"), ("()()()")),
-            (("Success"), (")())())")),
-            (("(( @"), ("))((")),
-        ];
+  #[test]
+  fn encodes() {
+    let samples = [
+      (("din"), ("(((")),
+      (("recede"), ("()()()")),
+      (("Success"), (")())())")),
+      (("(( @"), ("))((")),
+    ];
 
-        for (input, expected) in samples {
-            assert_eq!(duplicate_encode(input), expected)
-        }
+    for (input, expected) in samples {
+      assert_eq!(duplicate_encode(input), expected)
     }
+  }
 }
