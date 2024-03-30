@@ -19,6 +19,7 @@ mod int32_to_ip;
 mod josephus_permutation;
 mod valid_isbn10;
 mod tic_tac_toe_checker;
+mod format_duration;
 
 fn main() {
     println!("Hello, world!");
