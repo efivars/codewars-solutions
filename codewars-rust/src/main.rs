@@ -14,6 +14,7 @@ mod two_sum;
 mod consecutive_strings;
 mod build_tower;
 mod recover_secret_string_from_random_triplets;
+mod product_fib;
 
 fn main() {
     println!("Hello, world!");
