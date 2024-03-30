@@ -29,7 +29,6 @@ enum CellValue {
   X,
   O,
 }
-
 impl CellValue {
   fn from_raw(raw: &u8) -> CellValue {
     match raw {
@@ -77,11 +76,10 @@ impl TicTacToe {
       };
     }
 
-    if self.has_empty_space() {
-      return GameState::Draw;
+    match self.has_empty_space() {
+      true => GameState::Draw,
+      false => GameState::InProgress,
     }
-
-    GameState::InProgress
   }
 
   fn is_win(&self, side: &CellValue) -> bool {
@@ -115,12 +113,10 @@ impl TicTacToe {
   }
 }
 
-fn is_solved(board: &[&[u8; 3]; 3]) -> i8 {
-  let ttt = TicTacToe::new(board);
+fn is_solved(raw_rows: &[&[u8; 3]; 3]) -> i8 {
+  let ttt = TicTacToe::new(raw_rows);
 
-  let game_state = ttt.get_state();
-
-  game_state.to_raw()
+  ttt.get_state().to_raw()
 }
 
 #[cfg(test)]
