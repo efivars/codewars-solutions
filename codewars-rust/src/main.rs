@@ -20,6 +20,7 @@ mod josephus_permutation;
 mod valid_isbn10;
 mod tic_tac_toe_checker;
 mod format_duration;
+mod smallest_possible_sum;
 
 fn main() {
     println!("Hello, world!");
