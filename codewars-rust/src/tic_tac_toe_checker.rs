@@ -6,6 +6,20 @@
  * If we were to set up a Tic-Tac-Toe game, we would want to know whether the board's
  * current state is solved, wouldn't we? Our goal is to create a function that will check that for us!
  */
+const WIN_COMBINATIONS: [[usize; 3]; 8] = [
+  // row-win
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  // col-win
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  // diag-win
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
 enum GameState {
   Draw,
   XWon,
@@ -51,7 +65,6 @@ impl CellValue {
 struct TicTacToe {
   cells: Vec<CellValue>,
 }
-
 impl TicTacToe {
   fn new(raw_rows: &[&[u8; 3]; 3]) -> TicTacToe {
     TicTacToe {
@@ -83,29 +96,16 @@ impl TicTacToe {
   }
 
   fn is_win(&self, side: &CellValue) -> bool {
-    if *side == CellValue::Empty {
-      panic!("Empty side cannot win xD");
-    }
-
     let cells = self.cells.as_slice();
 
-    let win_combinations = [
-      // row-win
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      // col-win
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      // diag-win
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-
-    win_combinations
-      .into_iter()
-      .any(|combination| combination.into_iter().all(|index| cells[index] == *side))
+    match side {
+      CellValue::Empty => panic!("Empty side cannot win xD"),
+      s => WIN_COMBINATIONS.iter().any(|combination| {
+        combination
+          .into_iter()
+          .all(|index| cells[*index] == *s)
+      }),
+    }
   }
 
   fn has_empty_space(&self) -> bool {
