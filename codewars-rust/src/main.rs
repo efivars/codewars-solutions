@@ -15,6 +15,7 @@ mod consecutive_strings;
 mod build_tower;
 mod recover_secret_string_from_random_triplets;
 mod product_fib;
+mod int32_to_ip;
 
 fn main() {
     println!("Hello, world!");
