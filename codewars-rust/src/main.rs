@@ -17,6 +17,7 @@ mod recover_secret_string_from_random_triplets;
 mod product_fib;
 mod int32_to_ip;
 mod josephus_permutation;
+mod valid_isbn10;
 
 fn main() {
     println!("Hello, world!");
