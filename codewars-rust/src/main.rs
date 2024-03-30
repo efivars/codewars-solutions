@@ -16,6 +16,7 @@ mod build_tower;
 mod recover_secret_string_from_random_triplets;
 mod product_fib;
 mod int32_to_ip;
+mod josephus_permutation;
 
 fn main() {
     println!("Hello, world!");
