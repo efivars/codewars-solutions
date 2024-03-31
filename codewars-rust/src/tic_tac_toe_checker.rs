@@ -90,8 +90,8 @@ impl TicTacToe {
     }
 
     match self.has_empty_space() {
-      true => GameState::Draw,
-      false => GameState::InProgress,
+      true => GameState::InProgress,
+      false => GameState::Draw,
     }
   }
 
@@ -107,7 +107,7 @@ impl TicTacToe {
   }
 
   fn has_empty_space(&self) -> bool {
-    self.cells.iter().all(|c| *c != CellValue::Empty)
+    self.cells.iter().any(|c| *c == CellValue::Empty)
   }
 }
 
