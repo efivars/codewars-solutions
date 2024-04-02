@@ -7,23 +7,9 @@
  *
  * There will always be only one integer that appears an odd number of times.
  */
-use std::collections::HashMap;
 
 fn find_odd(arr: &[i32]) -> i32 {
-  let mut nums: HashMap<&i32, usize> = HashMap::new();
-
-  for it in arr {
-    let occurrences = nums.get(it).unwrap_or(&0);
-
-    nums.insert(it, occurrences + 1);
-  }
-
-  nums
-    .into_iter()
-    .find(|(_, occurrences)| occurrences % 2 == 1)
-    .map(|(num, _occurrences)| num)
-    .unwrap()
-    .to_owned()
+  arr.into_iter().fold(0, |acc, n| acc ^ n)
 }
 
 #[cfg(test)]
